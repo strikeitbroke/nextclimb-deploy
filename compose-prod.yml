@@ -9,10 +9,12 @@ services:
       - ui
       - api
   ui:
-    build:
-      dockerfile: Dockerfile.prod
+    # Pulls the API image from your Docker Hub repository
+    image: strikeitbroke/nextclimb-ui:${IMAGE_TAG:-latest}
+    restart: always
   api:
-    build:
-      dockerfile: Dockerfile.prod # Using the uv-based production file
+    # Pulls the API image from your Docker Hub repository
+    image: strikeitbroke/nextclimb-api:${IMAGE_TAG:-latest}
+    restart: always
     environment:
       - DEBUG=False
