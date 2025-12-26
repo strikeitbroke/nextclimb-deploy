@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - ui
+      - api
+  ui:
+    build:
+      dockerfile: Dockerfile.prod
+  api:
+    build:
+      dockerfile: Dockerfile.prod # Using the uv-based production file
+    environment:
+      - DEBUG=False
