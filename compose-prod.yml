@@ -32,6 +32,8 @@ services:
     restart: always
     environment:
       - DEBUG=False
+      - MY_STRAVA_CLIENT_ID=${MY_STRAVA_CLIENT_ID}
+      - MY_STRAVA_CLIENT_SECRET=${MY_STRAVA_CLIENT_SECRET}
     volumes:
       # Maps the db file on your Droplet to the one inside the container
       - /root/db.sqlite3:/app/db.sqlite3
