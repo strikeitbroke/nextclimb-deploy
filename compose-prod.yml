@@ -22,3 +22,6 @@ services:
     restart: always
     environment:
       - DEBUG=False
+    volumes:
+      # Maps the db file on your Droplet to the one inside the container
+      - /root/db.sqlite3:/app/db.sqlite3
