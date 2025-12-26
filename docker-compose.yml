@@ -4,11 +4,6 @@ services:
       context: ../nextclimb-api
       # If your Dockerfile has a different name, uncomment the next line:
       # dockerfile: Dockerfile
-    volumes:
-      - ../nextclimb-api:/app
-      # This "Anonymous Volume" tells Docker to preserve the
-      # .venv that was created during the build process
-      - /app/.venv
     environment:
       - PYTHONUNBUFFERED=1
     # This ensures Django waits for potential DB services if you add them later
@@ -18,10 +13,6 @@ services:
   ui:
     build:
       context: ../nextclimb-ui
-    volumes:
-      - ../nextclimb-ui:/app
-      # Anonymous volume to protect container node_modules from being overwritten by local ones
-      - /app/node_modules
     environment:
       - VITE_API_URL=http://localhost:8000
     depends_on:

@@ -1,0 +1,12 @@
+services:
+  api:
+    volumes:
+      - ../nextclimb-api:/app
+      # This "Anonymous Volume" tells Docker to preserve the
+      # .venv that was created during the build process
+      - /app/.venv
+  ui:
+    volumes:
+      - ../nextclimb-ui:/app
+      # Anonymous volume to protect container node_modules from being overwritten by local ones
+      - /app/node_modules
