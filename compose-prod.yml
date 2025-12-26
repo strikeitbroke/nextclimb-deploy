@@ -11,10 +11,14 @@ services:
   ui:
     # Pulls the API image from your Docker Hub repository
     image: strikeitbroke/nextclimb-ui:${IMAGE_TAG:-latest}
+    build:
+      dockerfile: Dockerfile.prod # The specific file to use
     restart: always
   api:
     # Pulls the API image from your Docker Hub repository
     image: strikeitbroke/nextclimb-api:${IMAGE_TAG:-latest}
+    build:
+      dockerfile: Dockerfile.prod # The specific file to use
     restart: always
     environment:
       - DEBUG=False
