@@ -17,7 +17,7 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     # This keeps certbot running to check for renewals every 12 hours
-    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
   ui:
     # Pulls the API image from your Docker Hub repository
     image: strikeitbroke/nextclimb-ui:${IMAGE_TAG:-latest}
