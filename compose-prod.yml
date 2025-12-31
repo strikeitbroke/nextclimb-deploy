@@ -7,7 +7,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot  
+      - ./certbot/www:/var/www/certbot
     depends_on:
       - ui
       - api
@@ -37,3 +37,4 @@ services:
     volumes:
       # Maps the db file on your Droplet to the one inside the container
       - /root/db.sqlite3:/app/db.sqlite3
+      - ./logs:/app/logs
